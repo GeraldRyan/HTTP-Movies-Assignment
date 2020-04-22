@@ -5,6 +5,11 @@ import { useParams } from "react-router-dom";
 function UpdateMovie()
 {
 
+const handleClick = (e) =>{
+  e.preventDefault()
+}
+
+
   return (
     <div>Update Movies here
       <form action="">
@@ -24,7 +29,7 @@ function UpdateMovie()
           <label htmlFor=""></label>
           <input type="text" />
         </div>
-<button>Click me</button>
+        <button onClick={handleClick}>Click me</button>
 
 
 
