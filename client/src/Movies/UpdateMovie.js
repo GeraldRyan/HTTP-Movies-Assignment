@@ -19,21 +19,30 @@ function UpdateMovie(props)
   const [item, setItem] = useState(initialState)
   const { id } = useParams
 
-  useEffect(() =>
-  {
-    axios.get(`http://localhost:5000/api/movies/${id}`)
-      .then(res =>
-      {
-        console.log(res)
-        setItem(res.data)
-      })
-  }, [id])
-
-
   const handleClick = (e) =>
   {
     e.preventDefault()
+    // put request goes here
+    axios
+      .put(`http://localhost:3333/items/${id}`, item)
+      .then(res =>
+      {
+        props.setItems(res.data)
+        push(`/item-list/${id}`)
+      })
   }
+
+  const changeHandler = ev =>
+  {
+    ev.persist()
+    let value = ev.target.value
+    setItem({
+      ...item,
+      [ev.target.name]: value
+    })
+  }
+
+
 
 
   return (
@@ -41,29 +50,47 @@ function UpdateMovie(props)
       <form onSUbmit={handleClick}>
         <div>
           <label htmlFor=""></label>
-          <input type="text" placeholder="movie name" />
+          <input type="text" placeholder="movie name"
+            onChange={changeHandler}
+            value={item.title}
+          />
         </div>
         <div>
           <label htmlFor=""></label>
-          <input type="text" placeholder="Director" />
+          <input type="text" placeholder="Director"
+            onChange={changeHandler}
+            value={item.director}
+          />
         </div>
         <div>
           <label htmlFor=""></label>
-          <input type="text" placeholder="MetaScore" />
+          <input type="text" placeholder="MetaScore"
+            onChange={changeHandler}
+            value={item.metascore}
+          />
         </div>
         <div>
           <label htmlFor=""></label>
-          <input type="text" placeholder="Actor 1" />
+          <input type="text" placeholder="Actor 1"
+            onChange={changeHandler}
+            value={item.stars[0]}
+          />
         </div>
         <div>
           <label htmlFor=""></label>
-          <input type="text" placeholder="Actor 2" />
+          <input type="text" placeholder="Actor 2"
+            onChange={changeHandler}
+            value={item.stars[1]}
+          />
         </div>
         <div>
           <label htmlFor=""></label>
-          <input type="text" placeholder="Actor 3" />
+          <input type="text" placeholder="Actor 3"
+            onChange={changeHandler}
+            value={item.stars[2]}
+          />
         </div>
-
+        <button onClick={handleClick}>Submit</button>
 
 
       </form>
