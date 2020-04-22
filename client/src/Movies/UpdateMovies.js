@@ -42,9 +42,9 @@ const handleClick = (e) =>{
           <label htmlFor=""></label>
           <input type="text" />
         </div>
-        <Route to="/host">
+
         <button onClick={() => push(`/update-movie/${initialState.id}`)}>Edit</button>
-        </Route>
+
 
 
       </form>
