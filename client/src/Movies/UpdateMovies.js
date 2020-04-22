@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 function UpdateMovie()
 {
+const initialState = {
+
+    id: 5,
+    title: 'Tombstone',
+    director: 'George P. Cosmatos',
+    metascore: 89,
+    stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
+
+}
+
+
+
 
 const handleClick = (e) =>{
   e.preventDefault()
@@ -12,7 +25,7 @@ const handleClick = (e) =>{
 
   return (
     <div>Update Movies here
-      <form action="">
+      <form onSUbmit={handleClick}>
         <div>
           <label htmlFor=""></label>
           <input type="text" />
@@ -29,8 +42,9 @@ const handleClick = (e) =>{
           <label htmlFor=""></label>
           <input type="text" />
         </div>
+        <Route to="/host">
         <button onClick={handleClick}>Click me</button>
-
+        </Route>
 
 
       </form>
