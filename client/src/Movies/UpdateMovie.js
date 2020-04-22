@@ -15,8 +15,6 @@ const initialState = {
 
 }
 
-const {push} = useHistory()
-
 
 const handleClick = (e) =>{
   e.preventDefault()
@@ -43,7 +41,7 @@ const handleClick = (e) =>{
           <input type="text" />
         </div>
 
-        <button onClick={() => push(`/update-movie/${initialState.id}`)}>Edit</button>
+
 
 
 
