@@ -3,17 +3,25 @@ import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import { Route } from "react-router-dom";
 
+
+const initialState = {
+
+  
+  title: '',
+  director: '',
+  metascore: 0,
+  stars: [],
+
+}
+
+
 function UpdateMovie(props)
 {
-  const initialState = {
 
-    id: 5,
-    title: 'Tombstone',
-    director: 'George P. Cosmatos',
-    metascore: 89,
-    stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
-
-  }
+  // useEffect((){
+  //   axios
+  //   .get()
+  // },[])
 
   const { push } = useHistory()
   const [item, setItem] = useState(initialState)
@@ -34,7 +42,7 @@ function UpdateMovie(props)
 
   const changeHandler = e =>
   {
-    e.persist()
+   
     setItem({
       ...item,
       [e.target.name]: e.target.value
@@ -47,28 +55,28 @@ function UpdateMovie(props)
       <form onSUbmit={handleClick}>
         <div>
           <label htmlFor=""></label>
-          <input type="text" placeholder="movie name"
+          <input type="text" name="title" placeholder="movie name"
             onChange={changeHandler}
-            // value={item.title}
+            value={item.title}
           />
         </div>
         <div>
           <label htmlFor=""></label>
-          <input type="text" placeholder="Director"
+          <input type="text" name="director" placeholder="Director"
             onChange={changeHandler}
             value={item.director}
           />
         </div>
         <div>
           <label htmlFor=""></label>
-          <input type="text" placeholder="MetaScore"
+          <input type="text" name="metascore" placeholder="MetaScore"
             onChange={changeHandler}
             value={item.metascore}
           />
         </div>
         <div>
           <label htmlFor=""></label>
-          <input type="text" placeholder="Actor 1"
+          <input type="text" name="stars" placeholder="Actor 1"
             onChange={changeHandler}
             value={item.stars[0]}
           />
