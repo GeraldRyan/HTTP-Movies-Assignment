@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Route } from "react-router-dom";
 
 function UpdateMovie()
@@ -15,7 +15,7 @@ const initialState = {
 
 }
 
-
+const {push} = useHistory()
 
 
 const handleClick = (e) =>{
@@ -43,7 +43,7 @@ const handleClick = (e) =>{
           <input type="text" />
         </div>
         <Route to="/host">
-        <button onClick={handleClick}>Click me</button>
+        <button onClick={() => push(`/update-movie/${initialState.id}`)}>Edit</button>
         </Route>
 
 
