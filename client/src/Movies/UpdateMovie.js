@@ -32,17 +32,14 @@ function UpdateMovie(props)
       })
   }
 
-  const changeHandler = ev =>
+  const changeHandler = e =>
   {
-    ev.persist()
-    let value = ev.target.value
+    e.persist()
     setItem({
       ...item,
-      [ev.target.name]: value
+      [e.target.name]: e.target.value
     })
   }
-
-
 
 
   return (
@@ -52,7 +49,7 @@ function UpdateMovie(props)
           <label htmlFor=""></label>
           <input type="text" placeholder="movie name"
             onChange={changeHandler}
-            value={item.title}
+            // value={item.title}
           />
         </div>
         <div>
