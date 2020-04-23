@@ -27,7 +27,10 @@ function Movie({ addToSavedList })
   const deleteItem = (e) =>
   {
     e.preventDefault()
-    axios.delete(`http://localhost:5000//api/movies/${params.id}`)
+    console.log("params id", params.id) // this is working so that's not where the error is
+
+    axios
+    .delete(`http://localhost:5000//api/movies/${params.id}`)
       .then(res => {
         console.log("delete response", res)
       .push('/movies')
@@ -48,7 +51,7 @@ function Movie({ addToSavedList })
   return (
     <div className="save-wrapper">
       <MovieCard movie={movie} />
-      <button onClick={() => push(`/update-movie/${params.id}`)}>Edit</button>
+      <button onClick={() => push(`/update-movie/${movie.id}`)}>Edit</button>
       <button onClick={deleteItem}>Delete</button>
       <div className="save-button" onClick={saveMovie}>
         Save
