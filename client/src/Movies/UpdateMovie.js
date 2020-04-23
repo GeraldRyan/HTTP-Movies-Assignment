@@ -87,23 +87,10 @@ function UpdateMovie(props)
           <label htmlFor=""></label>
           <input type="text" name="stars" placeholder="Actor 1"
             onChange={changeHandler}
-            value={item.stars[0]}
+            value={item.stars}
           />
         </div>
-        <div>
-          <label htmlFor=""></label>
-          <input type="text" placeholder="Actor 2"
-            onChange={changeHandler}
-            value={item.stars[1]}
-          />
-        </div>
-        <div>
-          <label htmlFor=""></label>
-          <input type="text" placeholder="Actor 3"
-            onChange={changeHandler}
-            value={item.stars[2]}
-          />
-        </div>
+
         <button onClick={handleClick}>Submit</button>
 
 
