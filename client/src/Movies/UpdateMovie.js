@@ -6,7 +6,7 @@ import { Route } from "react-router-dom";
 
 const initialState = {
 
-  
+
   title: '',
   director: '',
   metascore: 0,
@@ -18,21 +18,30 @@ const initialState = {
 function UpdateMovie(props)
 {
 
-  // useEffect((){
-  //   axios
-  //   .get()
-  // },[])
 
   const { push } = useHistory()
   const [item, setItem] = useState(initialState)
-  const { id } = useParams
+  const { id } = useParams()
+
+  useEffect(() =>
+  {
+    axios
+      .get(`http://localhost:5000/api/movies/${id}`)
+      .then(res =>
+      {
+        console.log("Response", res)
+        setItem(res.data)
+      })
+  }
+    , [])
+
 
   const handleClick = (e) =>
   {
     e.preventDefault()
     // put request goes here
     axios
-      .put(`http://localhost:3333/items/${id}`, item)
+      .put(`http://localhost:5000/api/movies/${id}`, item)
       .then(res =>
       {
         props.setItems(res.data)
@@ -42,7 +51,7 @@ function UpdateMovie(props)
 
   const changeHandler = e =>
   {
-   
+
     setItem({
       ...item,
       [e.target.name]: e.target.value
