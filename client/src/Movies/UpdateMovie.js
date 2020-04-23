@@ -29,11 +29,10 @@ function UpdateMovie(props)
       .get(`http://localhost:5000/api/movies/${id}`)
       .then(res =>
       {
-        console.log("Response", res)
         setItem(res.data)
       })
   }
-    , [])
+    , [id])
 
 
   const handleClick = (e) =>
@@ -44,8 +43,9 @@ function UpdateMovie(props)
       .put(`http://localhost:5000/api/movies/${id}`, item)
       .then(res =>
       {
-        props.setItems(res.data)
-        push(`/item-list/${id}`)
+        console.log("Response", res)
+        setItem(res.data)
+        push(`/movies/`)
       })
   }
 
