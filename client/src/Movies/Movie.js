@@ -4,7 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
 import UpdateMovie from './UpdateMovie'
 
-function Movie({ addToSavedList })
+function Movie(props)
 {
   const [movie, setMovie] = useState(null);
   const params = useParams();
@@ -21,7 +21,7 @@ function Movie({ addToSavedList })
 
   const saveMovie = () =>
   {
-    addToSavedList(movie);
+    props.addToSavedList(movie);
   };
 
   const deleteItem = (e) =>
@@ -30,10 +30,11 @@ function Movie({ addToSavedList })
     console.log("params id", params.id) // this is working so that's not where the error is
 
     axios
-    .delete(`http://localhost:5000//api/movies/${params.id}`)
+    .delete(`http://localhost:5000/api/movies/${params.id}`)
       .then(res => {
         console.log("delete response", res)
-      .push('/movies')
+      push('/movies')
+      props.setRerender(props.rerender+1)
       })
       
   }

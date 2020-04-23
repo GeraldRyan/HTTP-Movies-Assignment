@@ -40,12 +40,13 @@ function UpdateMovie(props)
     e.preventDefault()
     // put request goes here
     axios
-      .put(`http://localhost:5000/api/movies/${id}`, item)
+      .put(`http://localhost:5000/api/movies/${id}`, item) 
       .then(res =>
       {
         console.log("Response", res)
-        props.setItems(res.data)
+        setItem(res.data)
         push(`/movies/${id}`)
+        props.setRerender(props.rerender+1)
       })
   }
 
@@ -61,7 +62,7 @@ function UpdateMovie(props)
 
   return (
     <div>Update Movie here
-      <form onSUbmit={handleClick}>
+      <form onSubmit={handleClick}>
         <div>
           <label htmlFor=""></label>
           <input type="text" name="title" placeholder="movie name"
