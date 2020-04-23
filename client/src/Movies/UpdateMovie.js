@@ -44,8 +44,8 @@ function UpdateMovie(props)
       .then(res =>
       {
         console.log("Response", res)
-        setItem(res.data)
-        push(`/movies/`)
+        props.setItems(res.data)
+        push(`/movies/${id}`)
       })
   }
 
