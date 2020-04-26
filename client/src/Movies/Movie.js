@@ -27,7 +27,7 @@ function Movie(props)
   const deleteItem = (e) =>
   {
     e.preventDefault()
-    console.log("params id", params.id) // this is working so that's not where the error is
+    console.log("params id", params.id) // this is working so that's not where the error is d
 
     axios
     .delete(`http://localhost:5000/api/movies/${params.id}`)
